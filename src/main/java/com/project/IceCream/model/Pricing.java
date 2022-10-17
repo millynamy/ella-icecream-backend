@@ -1,19 +1,26 @@
 package com.project.IceCream.model;
 
+import javax.persistence.*;
 import java.util.HashMap;
-
+@Entity
 public class Pricing {
-   HashMap<Topping, Double> toppingPricing;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    private Long id;
+    HashMap<Topping, Double> toppingPricing;
    HashMap<Flavor, Double> flavorPricing;
    HashMap<Container, Double> containerPricing;
    double totalPrice;
 
-   Pricing(){
+    Pricing(){
        this.toppingPricing = new HashMap<>();
        this.flavorPricing = new HashMap<>();
        this.containerPricing = new HashMap<>();
 
        setToppingPricing();
+       setFlavorPricing();
+       setContainerPricing();
    }
 
    private void setToppingPricing(){
@@ -43,7 +50,7 @@ public class Pricing {
         return flavorPricing;
     }
 
-    public void setContainerPricing(HashMap<Container, Double> containerPricing) {
+    public void setContainerPricing() {
         containerPricing.put(Container.BOWL,1.0);
         containerPricing.put(Container.PLATE,1.0);
         containerPricing.put(Container.FLATCONE,3.5);
@@ -61,5 +68,13 @@ public class Pricing {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

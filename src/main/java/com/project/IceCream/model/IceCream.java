@@ -1,7 +1,6 @@
 package com.project.IceCream.model;
 
 import java.util.ArrayList;
-
 public class IceCream {
     ArrayList<Topping> toppings;
     ArrayList<Flavor> flavors;

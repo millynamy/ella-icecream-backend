@@ -1,25 +1,26 @@
 package com.project.IceCream.model;
 
+import javax.persistence.*;
 import java.util.ArrayList;
-
+@Entity
 public class Order {
     ArrayList<IceCream> iceCreams;
     Delivery deliveryOptions;
-    Pricing pricing;
     double orderPrice;
-    int orderId;
 
-    public Order(int orderId){
-        setOrderId(orderId);
-        this.pricing = new Pricing();
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    Long orderId;
+
+    public Order(){
     }
 
-    public int getOrderId() {
+    public Long getOrderId() {
 
         return orderId;
     }
-    public void setOrderId(int orderId){
-
+    public void setOrderId(Long orderId){
         this.orderId = orderId;
     }
 
@@ -41,15 +42,5 @@ public class Order {
     public void setDeliveryOptions(Delivery deliveryOptions) {
 
         this.deliveryOptions = deliveryOptions;
-    }
-
-    public Pricing getPricing() {
-
-        return pricing;
-    }
-
-    public void setPricing(Pricing pricing) {
-
-        this.pricing = pricing;
     }
 }

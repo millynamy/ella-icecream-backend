@@ -47,7 +47,7 @@ public class IceCreamController {
     @PostMapping(value = "/icecream/choice", produces = "application/json")
     public Order iceCreamOrder(IceCream iceCream){
         // TODO complete implementation
-        return new Order(5639639);
+        return new Order();
     }
 
 
