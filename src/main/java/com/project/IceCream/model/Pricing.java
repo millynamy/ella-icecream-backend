@@ -1,16 +1,20 @@
 package com.project.IceCream.model;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.util.HashMap;
+
 @Entity
+@Component
 public class Pricing {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
     HashMap<Topping, Double> toppingPricing;
-   HashMap<Flavor, Double> flavorPricing;
-   HashMap<Container, Double> containerPricing;
+    HashMap<Flavor, Double> flavorPricing;
+    HashMap<Container, Double> containerPricing;
    double totalPrice;
 
     Pricing(){
@@ -32,9 +36,9 @@ public class Pricing {
    }
 
     public HashMap<Topping, Double> getToppingPricing(){
-
        return toppingPricing;
     }
+
     private void setFlavorPricing(){
        flavorPricing.put(Flavor.VANILLA,4.0);
        flavorPricing.put(Flavor.CARAMEL,4.5);
